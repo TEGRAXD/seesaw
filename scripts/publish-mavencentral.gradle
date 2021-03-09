@@ -2,7 +2,6 @@ apply plugin: 'maven-publish'
 apply plugin: 'de.marcphilipp.nexus-publish'
 apply plugin: 'signing'
 apply plugin: 'org.jetbrains.dokka'
-apply plugin: 'maven'
 
 task androidSourcesJar(type: Jar) {
     archiveClassifier.set('sources')
@@ -62,33 +61,6 @@ if (secretPropsFile.exists()) {
     ext["ossrhPassword"] = System.getenv('OSSRH_PASSWORD')
     ext["sonatypeStagingProfileId"] = System.getenv('SONATYPE_STAGING_PROFILE_ID')
 }
-
-//uploadArchives {
-//    repositories {
-//        mavenDeployer {
-//            configuration = configurations.deployerJars
-//            def releasesRepoUrl = "http://localhost:8081/repository/maven-releases/"
-//            def snapshotsRepoUrl = "http://localhost:8081/repository/maven-snapshots/"
-//            repository(url: "http://localhost:8081/repository/maven-releases/") {
-//                authentication(userName: "admin", password: "suganda8")
-//
-//                pom.groupId = PUBLISH_GROUP_ID
-//                pom.artifactId = PUBLISH_ARTIFACT_ID
-//                pom.version = PUBLISH_VERSION
-//
-//                // Two artifacts, the `aar` (or `jar`) and the sources
-//                if (project.plugins.findPlugin("com.android.library")) {
-//                    artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
-//                } else {
-//                    artifact("$buildDir/libs/${project.getName()}-${version}.jar")
-//                }
-//
-//                artifact androidSourcesJar
-//                artifact javadocJar
-//            }
-//        }
-//    }
-//}
 
 publishing {
     publications {
@@ -151,8 +123,6 @@ publishing {
             // This is an arbitrary name, you may also use "mavencentral" or
             // any other name that's descriptive for you
             name = "nexus"
-            // def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-            // def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
             def releasesRepoUrl = "http://localhost:8081/repository/maven-releases/"
             def snapshotsRepoUrl = "http://localhost:8081/repository/maven-snapshots/"
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
@@ -162,19 +132,4 @@ publishing {
             }
         }
     }
-
-//    signing {
-//        sign publishing.publications
-//    }
-//
-//    nexusPublishing {
-//        packageGroup = packageGroup
-//    }
 }
-//
-//nexusStaging {
-//    packageGroup = PUBLISH_GROUP_ID
-//    stagingProfileId = sonatypeStagingProfileId
-//    username = ossrhUsername
-//    password = ossrhPassword
-//}

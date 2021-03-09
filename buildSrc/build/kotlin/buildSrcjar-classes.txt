@@ -1,1 +1,1 @@
-D:\Projects\Android\seesaw_demo\buildSrc\build\classes\kotlin\main\Configuration.class;D:\Projects\Android\seesaw_demo\buildSrc\build\classes\kotlin\main\Dependencies.class;D:\Projects\Android\seesaw_demo\buildSrc\build\classes\kotlin\main\DependenciesKt.class
+D:\Projects\Android\seesaw\buildSrc\build\classes\kotlin\main\Configuration.class;D:\Projects\Android\seesaw\buildSrc\build\classes\kotlin\main\Dependencies.class;D:\Projects\Android\seesaw\buildSrc\build\classes\kotlin\main\DependenciesKt.class

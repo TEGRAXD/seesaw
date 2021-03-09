@@ -2,11 +2,23 @@ Seesaw
 ====
 Seesaw is MVVM (Model-View-ViewModel) helper to hasten app development.
 
-<!--![](static/lxvi_logo.png)-->
+![](static/seesaw.png)
+
+Publish
+--------
+- Pull the latest stable source code from GitHub's [repository][1].
+- Set up JAVA_HOME and Java's Path in system environment variable.
+- Set up Nexus' Path in system environment variable.
+- Open Command Prompt as administrator.
+- Run command "nexus /install" to first install nexus.
+- Run command "nexus /start" to start the service.
+- Open "http://localhost:8081/" and change admin password.
+- Add username and password in local.properties.
+- Run command "gradlew build publish" to build and publish.
 
 Download
 --------
-Download the source code from GitHub's [releases page][1] or using Gradle, Maven, Jitpack (soon).
+Check the latest version in Nexus Repository Manager ("http://localhost:8081/").
 
 Using Gradle (Project):
 
