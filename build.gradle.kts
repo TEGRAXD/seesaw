@@ -4,6 +4,7 @@ apply(plugin = "org.jetbrains.dokka")
 
 buildscript {
     repositories {
+        mavenLocal()
         google()
         mavenCentral()
         maven {
@@ -26,6 +27,7 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenLocal()
         google()
         mavenCentral()
         maven {

@@ -9,6 +9,10 @@ ext {
     set("PUBLISH_ARTIFACT_ID", Configuration.artifactSeesaw)
 }
 
+apply {
+    from("${rootProject.projectDir}/scripts/publish-mavencentral.gradle")
+}
+
 android {
     compileSdkVersion(Configuration.compileSdkVersion)
 
@@ -16,6 +20,10 @@ android {
         minSdkVersion(Configuration.minSdkVersion)
         targetSdkVersion(Configuration.targetSdkVersion)
         versionName = Configuration.versionName
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     compileOptions {
@@ -29,4 +37,9 @@ android {
 
 dependencies {
     implementation(Dependencies.kotlinStdLib)
+    implementation(Dependencies.androidxAppCompat)
+    implementation(Dependencies.androidxLifecycleCommonJava8)
+    implementation(Dependencies.androidxLifecycleLiveDataKTX)
+    implementation(Dependencies.timber)
+    implementation(Dependencies.gson)
 }
