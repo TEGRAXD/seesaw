@@ -5,6 +5,6 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class ErrorsResponse(
+data class ErrorResponse(
     @SerializedName("error_messages") @Expose var error_messages: JsonObject
 ) : Serializable

@@ -1,11 +1,11 @@
 package com.suganda8.seesaw.reactive
 
-import com.suganda8.seesaw.data.ErrorsResponse
+import com.suganda8.seesaw.data.ErrorResponse
 
 data class Resource<out T>(
     val status: Status,
     val data: T?,
-    val errors: ErrorsResponse?,
+    val error: ErrorResponse?,
     val message: String?,
     val otherMessage: String?
 ) {
@@ -24,9 +24,9 @@ data class Resource<out T>(
 
         fun <T> error(
             data: T? = null,
-            errors: ErrorsResponse? = null,
+            error: ErrorResponse? = null,
             message: String? = null,
             otherMessage: String? = null
-        ): Resource<T> = Resource(Status.ERROR, data, errors, message, otherMessage)
+        ): Resource<T> = Resource(Status.ERROR, data, error, message, otherMessage)
     }
 }

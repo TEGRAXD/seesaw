@@ -20,20 +20,71 @@ Download
 --------
 Check the latest version in Nexus Repository Manager ("http://localhost:8081/").
 
-Using Gradle (Project):
+Gradle (Project):
 
 ```gradle
+// Using Gradle Groovy DSL
+File secretPropsFile = file('./local.properties')
+if (secretPropsFile.exists()) {
+    Properties p = new Properties()
+    p.load(new FileInputStream(secretPropsFile))
+    p.each { name, value ->
+        ext[name] = value
+    }
+} else {
+    throw new IllegalStateException("secret.properties could not be located for build process")
+}
+
+// Using Gradle Kotlin DSL
+// val nexusUsername: String = gradleLocalProperties(rootDir).getProperty("nexusUsername")
+// val nexusPassword: String = gradleLocalProperties(rootDir).getProperty("nexusPassword")
+
+// ..
+
+allprojects {
+    repositories {
+        maven {
+            url = uri("http://localhost:8081/repository/maven-releases/")
+            credentials {
+                // Set up nexusUsername & nexusPassword in local.properties
+                username = nexusUsername
+                password = nexusPassword
+            }
+        }
+        maven {
+            url = uri("http://localhost:8081/repository/maven-snapshots/")
+            credentials {
+                // Set up nexusUsername & nexusPassword in local.properties
+                username = nexusUsername
+                password = nexusPassword
+            }
+        }
+        // ..
+    }
+}
 ```
 
 then, add Seesaw in Gradle (Module):
 
 ```gradle
+dependencies {
+    // Using Gradle Groovy DSL
+    implementation 'com.github.suganda8:seesaw:latest'
+
+    // Using Gradle Kotlin DSL
+    // implementation("com.github.suganda8:seesaw:latest")
+}
 ```
 
-Using Maven:
-
-```xml
-```
+Features
+-----
+- Resource & Status
+- Single Live Event
+- Auto Cleared Value Lifecycle
+- Fragment View Binding Delegate
+- Base Response & Error Response
+- Error Message Handler
+- Error Response Handler
 
 Usage
 -----
@@ -51,6 +102,6 @@ Tegar Bangun Suganda
 [@canaryv8][2] (Twitter)\
 [@suganda8][3] (Github)
 
-[1]: https://github.com/suganda8/seesaw/releases
+[1]: https://github.com/suganda8/seesaw/tree/master
 [2]: https://twitter.com/canaryv8
 [3]: https://github.com/suganda8

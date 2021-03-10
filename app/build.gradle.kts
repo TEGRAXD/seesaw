@@ -50,5 +50,7 @@ dependencies {
     testImplementation(Dependencies.junit4)
     androidTestImplementation(Dependencies.androidxTestJunit)
     androidTestImplementation(Dependencies.espressoCore)
+
+    // implementation("com.github.suganda8:seesaw:1.0.0")
     implementation(project(":seesaw"))
 }

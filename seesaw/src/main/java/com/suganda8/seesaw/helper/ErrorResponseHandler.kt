@@ -1,11 +1,11 @@
 package com.suganda8.seesaw.helper
 
-import com.suganda8.seesaw.data.ErrorsResponse
+import com.suganda8.seesaw.data.ErrorResponse
 import com.google.gson.JsonArray
 
-class ErrorsResponseHandler {
+class ErrorResponseHandler {
     companion object {
-        fun getHashMap(errorMessages: ErrorsResponse?): HashMap<String, MutableList<String>> {
+        fun getHashMap(errorMessages: ErrorResponse?): HashMap<String, MutableList<String>> {
             if (errorMessages != null) {
                 val errorMessagesObject = errorMessages.error_messages
                 val errorHashMap = HashMap<String, MutableList<String>>()
