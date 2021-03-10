@@ -91,7 +91,7 @@ Usage
 
 Status
 ------
-Version 1.0.0 is being developed.
+Version 1.0.0 is released now.
 
 Developer
 ------
